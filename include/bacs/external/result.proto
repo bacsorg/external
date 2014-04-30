@@ -15,23 +15,6 @@ message HandleList
     repeated Handle handle = 1;
 }
 
-message Response
-{
-    // if handle is null at least one error is required
-    // and error condition is fatal
-    optional Handle handle = 1;
-    repeated string error = 2;
-    repeated string warning = 3;
-
-    // do we need numeric status for error/warning?
-    // or we need complex Status struct like { status, message } ?
-}
-
-message ResponseList
-{
-    repeated Response response = 1;
-}
-
 message System
 {
     enum Status

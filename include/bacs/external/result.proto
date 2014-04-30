@@ -2,8 +2,6 @@ package bacs.external.result;
 
 import "bacs/external/submit.proto";
 
-// TODO it is possible to use revision@submit_id here
-// instead of complex structure
 message Handle
 {
     required submit.Handle submit = 1;
@@ -13,6 +11,17 @@ message Handle
 message HandleList
 {
     repeated Handle handle = 1;
+}
+
+message MultipleHandle
+{
+    required submit.Handle submit = 1;
+    repeated string revision = 2;
+}
+
+message MultipleHandleList
+{
+    repeated MultipleHandle handle = 1;
 }
 
 message System

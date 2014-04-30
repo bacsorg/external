@@ -12,6 +12,6 @@ service Judge
     rpc Rejudge (submit.Handle) returns (result.Response);
     rpc RejudgeAll (submit.HandleList) returns (result.ResponseList);
 
-    rpc Fetch (submit.Handle) returns (result.Submit);
-    rpc FetchAll (submit.HandleList) returns (result.SubmitList);
+    rpc FetchResult (result.Handle) returns (result.Submit);
+    rpc FetchResultAll (result.HandleList) returns (result.SubmitList);
 }

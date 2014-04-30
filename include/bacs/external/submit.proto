@@ -2,10 +2,9 @@ package bacs.external.submit;
 
 message Submit
 {
-    required Problem problem = 1;
-    required Source source = 2;
-    required User user = 3;
-    required Application application = 4;
+    required Authentication authentication = 1;
+    required Problem problem = 2;
+    required Source source = 3;
 }
 
 message SubmitList
@@ -36,24 +35,13 @@ message Source
     required string language = 2;
 }
 
-// TODO reconsider auth
-
-message User
+message User // union
 {
-    message LoginPassword
-    {
-        // something like “name@host”
-        required string id = 1;
-        required string password = 2;
-    }
-    message Token
-    {
-        required string token = 1;
-    }
+    optional string login = 1;
 }
 
-message Application
+message Authentication
 {
-    required string id = 1;
-    required string token = 2;
+    required string token = 1;
+    optional User user = 2;
 }

@@ -23,12 +23,10 @@ message HandleList
     repeated Handle handle = 1;
 }
 
-// FIXME use string problem@contest
 message Problem
 {
-    // null value for Archive contest? Or use non-optional here
     required string id = 1;
-    optional string contest = 2;
+    required string contest = 2;
 }
 
 message Source

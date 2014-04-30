@@ -16,6 +16,7 @@ message HandleList
 message MultipleHandle
 {
     required submit.Handle submit = 1;
+    // ordered by result timestamp descending
     repeated string revision = 2;
 }
 

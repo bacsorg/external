@@ -31,7 +31,7 @@ message Problem
 
 message Source
 {
-    required string data = 1;
+    required bytes data = 1;
     // may become structure as language concept evolves
     required string language = 2;
 }

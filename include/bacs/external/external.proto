@@ -5,13 +5,13 @@ import "bacs/external/submit.proto";
 
 service Judge
 {
-    rpc Submit (submit.Submit) returns (submit.Handle);
+    rpc Submit (submit.Submit) returns (result.Response);
     rpc SubmitAll (submit.SubmitList) returns (result.ResponseList);
 
     // revision is not used
-    rpc Rejudge (submit.Handle) returns (submit.Handle);
+    rpc Rejudge (submit.Handle) returns (result.Response);
     rpc RejudgeAll (submit.HandleList) returns (result.ResponseList);
 
-    rpc Fetch (submit.Handle) returns (submit.Submit);
-    rpc FetchAll (submit.HandleList) returns (submit.SubmitList);
+    rpc Fetch (submit.Handle) returns (result.Submit);
+    rpc FetchAll (submit.HandleList) returns (result.SubmitList);
 }

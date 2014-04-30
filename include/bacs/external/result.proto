@@ -80,3 +80,8 @@ message Submit
     optional Build build = 2;
     optional Judge judge = 3;
 }
+
+message SubmitList
+{
+    repeated Submit submit = 1;
+}

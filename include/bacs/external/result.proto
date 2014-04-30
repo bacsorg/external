@@ -1,0 +1,82 @@
+package bacs.external.result;
+
+import "bacs/external/submit.proto";
+
+message Response
+{
+    // if handle is null at least one error is required
+    // and error condition is fatal
+    optional submit.Handle handle = 1;
+    repeated string error = 2;
+    repeated string warning = 3;
+
+    // do we need numeric status for error/warning?
+    // or we need complex Status struct like { status, message } ?
+}
+
+message ResponseList
+{
+    repeated Response response = 1;
+}
+
+message System
+{
+    enum Status
+    {
+        OK = 0;
+        FAIL = 1;
+
+        PENDING = 100;
+        RUNNING = 101;
+    }
+    required Status status = 1;
+}
+
+message Build
+{
+    enum Status
+    {
+        OK = 0;
+        FAIL = 1;
+    }
+    required Status status = 1;
+    optional string output = 2;
+}
+
+message Judge
+{
+    enum Status
+    {
+        OK = 0;
+        ABNORMAL_EXIT = 1;
+        TIME_LIMIT_EXCEEDED = 2;
+        REAL_TIME_LIMIT_EXCEEDED = 3;
+        MEMORY_LIMIT_EXCEEDED = 4;
+        OUTPUT_LIMIT_EXCEEDED = 5;
+        QUERIES_LIMIT_EXCEEDED = 6;
+
+        WRONG_ANSWER = 100;
+        PRESENTATION_ERROR = 101;
+        INCORRECT_REQUEST = 102;
+        INSUFFICIENT_DATA = 103;
+        EXCESS_DATA = 104;
+
+        FAIL_TEST = 1000;
+    }
+    required Status status = 1;
+    optional string status_message = 2;
+    optional ResourceUsage resource_usage = 3;
+}
+
+message ResourceUsage
+{
+    required uint64 max_memory_usage_bytes = 1;
+    required uint64 max_time_usage_millis = 2;
+}
+
+message Submit
+{
+    required System system = 1;
+    optional Build build = 2;
+    optional Judge judge = 3;
+}

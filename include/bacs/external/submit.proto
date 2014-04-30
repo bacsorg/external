@@ -1,0 +1,64 @@
+package bacs.external.submit;
+
+message Submit
+{
+    required Problem problem = 1;
+    required Source source = 2;
+    required User user = 3;
+    required Application application = 4;
+}
+
+message SubmitList
+{
+    repeated Submit submit = 1;
+}
+
+// TODO it is possible to use revision@submit_id here
+// instead of complex structure
+message Handle
+{
+    required string id = 1;
+    optional string revision = 2; // if not specified used latest revision
+}
+
+message HandleList
+{
+    repeated Handle handle = 1;
+}
+
+// FIXME use string problem@contest
+message Problem
+{
+    // null value for Archive contest? Or use non-optional here
+    required string id = 1;
+    optional string contest = 2;
+}
+
+message Source
+{
+    required string data = 1;
+    // may become structure as language concept evolves
+    required string language = 2;
+}
+
+// TODO reconsider auth
+
+message User
+{
+    message LoginPassword
+    {
+        // something like “name@host”
+        required string id = 1;
+        required string password = 2;
+    }
+    message Token
+    {
+        required string token = 1;
+    }
+}
+
+message Application
+{
+    required string id = 1;
+    required string token = 2;
+}

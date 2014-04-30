@@ -1,0 +1,17 @@
+package bacs.external;
+
+import "bacs/external/result.proto";
+import "bacs/external/submit.proto";
+
+service Judge
+{
+    rpc Submit (submit.Submit) returns (submit.Handle);
+    rpc SubmitAll (submit.SubmitList) returns (result.ResponseList);
+
+    // revision is not used
+    rpc Rejudge (submit.Handle) returns (submit.Handle);
+    rpc RejudgeAll (submit.HandleList) returns (result.ResponseList);
+
+    rpc Fetch (submit.Handle) returns (submit.Submit);
+    rpc FetchAll (submit.HandleList) returns (submit.SubmitList);
+}

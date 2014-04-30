@@ -2,7 +2,7 @@ package bacs.external.submit;
 
 message Submit
 {
-    required Authentication authentication = 1;
+    required User user = 1;
     required Problem problem = 2;
     required Source source = 3;
 }
@@ -38,10 +38,4 @@ message Source
 message User // union
 {
     optional string login = 1;
-}
-
-message Authentication
-{
-    required string token = 1;
-    optional User user = 2;
 }

@@ -13,12 +13,9 @@ message SubmitList
     repeated Submit submit = 1;
 }
 
-// TODO it is possible to use revision@submit_id here
-// instead of complex structure
 message Handle
 {
     required string id = 1;
-    optional string revision = 2; // if not specified used latest revision
 }
 
 message HandleList

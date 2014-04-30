@@ -15,6 +15,9 @@ service Judge
     rpc FetchResult (result.Handle) returns (result.Submit);
     rpc FetchResultAll (result.HandleList) returns (result.SubmitList);
 
+    rpc FetchLatestResult (submit.Handle) returns (result.Submit);
+    rpc FetchLatestResultAll (submit.HandleList) returns (result.SubmitList);
+
     rpc GetResultRevisions (submit.Handle)
         returns (result.MultipleHandle);
     rpc GetResultRevisionsAll (submit.HandleList)

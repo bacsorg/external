@@ -5,7 +5,7 @@ import "bacs/external/submit.proto";
 message Handle
 {
     required submit.Handle submit = 1;
-    optional string revision = 2; // if not specified used latest revision
+    required string revision = 2;
 }
 
 message HandleList
@@ -81,9 +81,10 @@ message ResourceUsage
 
 message Submit
 {
-    required System system = 1;
-    optional Build build = 2;
-    optional Judge judge = 3;
+    required Handle handle = 1;
+    required System system = 2;
+    optional Build build = 3;
+    optional Judge judge = 4;
 }
 
 message SubmitList

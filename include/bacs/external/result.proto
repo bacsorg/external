@@ -5,7 +5,7 @@ import "bacs/external/submit.proto";
 message Handle
 {
     required submit.Handle submit = 1;
-    required string revision = 2;
+    required int64 revision = 2;
 }
 
 message HandleList
@@ -17,7 +17,7 @@ message MultipleHandle
 {
     required submit.Handle submit = 1;
     // ordered by result timestamp descending
-    repeated string revision = 2;
+    repeated int64 revision = 2;
 }
 
 message MultipleHandleList

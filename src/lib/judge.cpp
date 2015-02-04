@@ -1,21 +1,21 @@
 #include <bacs/external/judge.hpp>
 
+#include <bunsan/curl/easy.hpp>
+#include <bunsan/curl/options/callback.hpp>
+#include <bunsan/curl/options/http.hpp>
+#include <bunsan/curl/options/network.hpp>
 #include <bunsan/protobuf/binary.hpp>
-
-#include <boost/network/protocol/http/client.hpp>
-#include <boost/network/uri.hpp>
 
 namespace bacs{namespace external
 {
-    namespace http = boost::network::http;
-    namespace uri = boost::network::uri;
+    namespace curl = bunsan::curl;
 
     struct Judge::impl
     {
         explicit impl(const std::string &address): root(address) {}
 
         std::string root;
-        http::client client;
+        curl::easy client;
     };
 
     Judge::Judge(const std::string &address): pimpl(new impl(address)) {}
@@ -49,9 +49,16 @@ namespace bacs{namespace external
     std::string Judge::Call(const std::string &method,
                             const std::string &message)
     {
-        http::client::request request(pimpl->root + "/" + method);
-        request << boost::network::body(message);
-        http::client::response response = pimpl->client.get(request);
-        return body(response);
+        pimpl->client.set(curl::options::url(pimpl->root + "/" + method));
+        pimpl->client.set(curl::options::postfields(message));
+        std::string response;
+        pimpl->client.set(curl::options::readfunction(
+            [&](char *ptr, size_t size)
+            {
+                response.append(ptr, size);
+                return size;
+            }));
+        pimpl->client.perform();
+        return response;
     }
 }}

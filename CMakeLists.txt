@@ -6,9 +6,8 @@ cmake_minimum_required(VERSION 2.8)
 
 include(BunsanCommon)
 
-bunsan_use_bunsan(common protobuf)
+bunsan_use_bunsan(common protobuf curl)
 bunsan_use_boost(system filesystem program_options serialization thread)
-bunsan_use_package(cppnetlib)
 bunsan_use_protobuf()
 
 bunsan_protobuf_generate_cpp(SOURCES proto_srcs HEADERS proto_hdrs INSTALL include PROTOS

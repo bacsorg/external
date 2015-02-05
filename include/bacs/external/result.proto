@@ -5,7 +5,7 @@ import "bacs/external/submit.proto";
 message Handle
 {
     required submit.Handle submit = 1;
-    required string revision = 2;
+    required int64 revision = 2;
 }
 
 message HandleList
@@ -17,7 +17,7 @@ message MultipleHandle
 {
     required submit.Handle submit = 1;
     // ordered by result timestamp descending
-    repeated string revision = 2;
+    repeated int64 revision = 2;
 }
 
 message MultipleHandleList
@@ -70,10 +70,11 @@ message Test
         FAIL_TEST = 1000;
         SKIPPED = 2000;
     }
-    required string id = 1;
-    required Status status = 2;
-    optional string judge_message = 3;
-    optional ResourceUsage resource_usage = 4;
+    required string group_name = 1;
+    required string id = 2;
+    required Status status = 3;
+    optional string judge_message = 4;
+    optional ResourceUsage resource_usage = 5;
 }
 
 message TestGroup

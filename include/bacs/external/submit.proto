@@ -14,7 +14,7 @@ message SubmitList
 
 message Handle
 {
-    required string id = 1;
+    required int64 id = 1;
 }
 
 message HandleList
@@ -25,14 +25,14 @@ message HandleList
 message Problem
 {
     required string id = 1;
-    required string contest = 2;
+    required int64 contest = 2;
 }
 
 message Source
 {
     required bytes data = 1;
     // may become structure as language concept evolves
-    required string language = 2;
+    required int64 language = 2;
 }
 
 message User // union

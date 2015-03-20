@@ -1,3 +1,5 @@
+syntax = "proto2";
+
 package bacs.external.result;
 
 import "bacs/external/submit.proto";

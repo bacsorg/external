@@ -8,7 +8,6 @@ find_package(BunsanCMake CONFIG REQUIRED)
 
 bunsan_add_protobuf_cxx_library(
     TARGET ${PROJECT_NAME}_pb
-    SHARED
     PROTOS
         bacs/external/external.proto
         bacs/external/result.proto
@@ -18,7 +17,7 @@ bunsan_add_protobuf_cxx_library(
     INSTALL
 )
 
-bunsan_add_shared_library(${PROJECT_NAME}
+bunsan_add_library(${PROJECT_NAME}
     src/lib/judge.cpp
 )
 bunsan_use_target(${PROJECT_NAME} ${PROJECT_NAME}_pb)

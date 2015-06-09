@@ -16,6 +16,7 @@ bunsan_add_protobuf_cxx_library(
         bacs/external/external.proto
         bacs/external/result.proto
         bacs/external/submit.proto
+    GRPC
     LIBRARIES ${bunsan_common_LIBRARIES}
     INCLUDE_DIRECTORIES ${bunsan_common_INCLUDE_DIRS}
     INSTALL

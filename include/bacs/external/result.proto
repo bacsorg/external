@@ -12,7 +12,7 @@ message Handle
 
 message HandleList
 {
-    repeated Handle handle = 1;
+    repeated Handle entry = 1;
 }
 
 message MultipleHandle
@@ -24,7 +24,7 @@ message MultipleHandle
 
 message MultipleHandleList
 {
-    repeated MultipleHandle handle = 1;
+    repeated MultipleHandle entry = 1;
 }
 
 message System
@@ -101,5 +101,5 @@ message Submit
 
 message SubmitList
 {
-    repeated Submit submit = 1;
+    repeated Submit entry = 1;
 }

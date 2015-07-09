@@ -11,7 +11,7 @@ message Submit
 
 message SubmitList
 {
-    repeated Submit submit = 1;
+    repeated Submit entry = 1;
 }
 
 message Handle
@@ -21,7 +21,7 @@ message Handle
 
 message HandleList
 {
-    repeated Handle handle = 1;
+    repeated Handle entry = 1;
 }
 
 message Problem

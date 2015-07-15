@@ -5,23 +5,21 @@ package bacs.external;
 import "bacs/external/result.proto";
 import "bacs/external/submit.proto";
 
-service Judge
-{
-    rpc Submit (submit.Submit) returns (result.Handle);
-    rpc SubmitAll (submit.SubmitList) returns (result.HandleList);
+service Judge {
+  rpc Submit(submit.Submit) returns (result.Handle);
+  rpc SubmitAll(submit.SubmitList) returns (result.HandleList);
 
-    // revision is not used
-    rpc Rejudge (submit.Handle) returns (result.Handle);
-    rpc RejudgeAll (submit.HandleList) returns (result.HandleList);
+  // revision is not used
+  rpc Rejudge(submit.Handle) returns (result.Handle);
+  rpc RejudgeAll(submit.HandleList) returns (result.HandleList);
 
-    rpc FetchResult (result.Handle) returns (result.Submit);
-    rpc FetchResultAll (result.HandleList) returns (result.SubmitList);
+  rpc FetchResult(result.Handle) returns (result.Submit);
+  rpc FetchResultAll(result.HandleList) returns (result.SubmitList);
 
-    rpc FetchLatestResult (submit.Handle) returns (result.Submit);
-    rpc FetchLatestResultAll (submit.HandleList) returns (result.SubmitList);
+  rpc FetchLatestResult(submit.Handle) returns (result.Submit);
+  rpc FetchLatestResultAll(submit.HandleList) returns (result.SubmitList);
 
-    rpc GetResultRevisions (submit.Handle)
-        returns (result.MultipleHandle);
-    rpc GetResultRevisionsAll (submit.HandleList)
-        returns (result.MultipleHandleList);
+  rpc GetResultRevisions(submit.Handle) returns (result.MultipleHandle);
+  rpc GetResultRevisionsAll(submit.HandleList)
+      returns (result.MultipleHandleList);
 }

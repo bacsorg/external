@@ -4,102 +4,88 @@ package bacs.external.result;
 
 import "bacs/external/submit.proto";
 
-message Handle
-{
-    required submit.Handle submit = 1;
-    required uint64 revision = 2;
+message Handle {
+  required submit.Handle submit = 1;
+  required uint64 revision = 2;
 }
 
-message HandleList
-{
-    repeated Handle entry = 1;
+message HandleList {
+  repeated Handle entry = 1;
 }
 
-message MultipleHandle
-{
-    required submit.Handle submit = 1;
-    // ordered by result timestamp descending
-    repeated uint64 revision = 2;
+message MultipleHandle {
+  required submit.Handle submit = 1;
+  // ordered by result timestamp descending
+  repeated uint64 revision = 2;
 }
 
-message MultipleHandleList
-{
-    repeated MultipleHandle entry = 1;
+message MultipleHandleList {
+  repeated MultipleHandle entry = 1;
 }
 
-message System
-{
-    enum Status
-    {
-        OK = 0;
-        FAIL = 1;
+message System {
+  enum Status {
+    OK = 0;
+    FAIL = 1;
 
-        PENDING = 100;
-        RUNNING = 101;
-    }
-    required Status status = 1;
+    PENDING = 100;
+    RUNNING = 101;
+  }
+  required Status status = 1;
 }
 
-message Build
-{
-    enum Status
-    {
-        OK = 0;
-        FAIL = 1;
-    }
-    required Status status = 1;
-    optional string output = 2;
+message Build {
+  enum Status {
+    OK = 0;
+    FAIL = 1;
+  }
+  required Status status = 1;
+  optional string output = 2;
 }
 
-message Test
-{
-    enum Status
-    {
-        OK = 0;
-        ABNORMAL_EXIT = 1;
-        TIME_LIMIT_EXCEEDED = 2;
-        REAL_TIME_LIMIT_EXCEEDED = 3;
-        MEMORY_LIMIT_EXCEEDED = 4;
-        OUTPUT_LIMIT_EXCEEDED = 5;
-        QUERIES_LIMIT_EXCEEDED = 6;
+message Test {
+  enum Status {
+    OK = 0;
+    ABNORMAL_EXIT = 1;
+    TIME_LIMIT_EXCEEDED = 2;
+    REAL_TIME_LIMIT_EXCEEDED = 3;
+    MEMORY_LIMIT_EXCEEDED = 4;
+    OUTPUT_LIMIT_EXCEEDED = 5;
+    QUERIES_LIMIT_EXCEEDED = 6;
 
-        WRONG_ANSWER = 100;
-        PRESENTATION_ERROR = 101;
-        INCORRECT_REQUEST = 102;
-        INSUFFICIENT_DATA = 103;
-        EXCESS_DATA = 104;
+    WRONG_ANSWER = 100;
+    PRESENTATION_ERROR = 101;
+    INCORRECT_REQUEST = 102;
+    INSUFFICIENT_DATA = 103;
+    EXCESS_DATA = 104;
 
-        FAIL_TEST = 1000;
-        SKIPPED = 2000;
-    }
-    required string id = 1;
-    required Status status = 2;
-    optional string judge_message = 3;
-    optional ResourceUsage resource_usage = 4;
+    FAIL_TEST = 1000;
+    SKIPPED = 2000;
+  }
+  required string id = 1;
+  required Status status = 2;
+  optional string judge_message = 3;
+  optional ResourceUsage resource_usage = 4;
 }
 
-message TestGroup
-{
-    required string id = 1;
-    required bool executed = 2;
-    repeated Test test = 3;
+message TestGroup {
+  required string id = 1;
+  required bool executed = 2;
+  repeated Test test = 3;
 }
 
-message ResourceUsage
-{
-    required uint64 memory_usage_bytes = 1;
-    required uint64 time_usage_millis = 2;
+message ResourceUsage {
+  required uint64 memory_usage_bytes = 1;
+  required uint64 time_usage_millis = 2;
 }
 
-message Submit
-{
-    required Handle handle = 1;
-    required System system = 2;
-    optional Build build = 3;
-    repeated TestGroup test_group = 4;
+message Submit {
+  required Handle handle = 1;
+  required System system = 2;
+  optional Build build = 3;
+  repeated TestGroup test_group = 4;
 }
 
-message SubmitList
-{
-    repeated Submit entry = 1;
+message SubmitList {
+  repeated Submit entry = 1;
 }

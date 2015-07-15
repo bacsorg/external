@@ -2,42 +2,37 @@ syntax = "proto2";
 
 package bacs.external.submit;
 
-message Submit
-{
-    required User user = 1;
-    required Problem problem = 2;
-    required Source source = 3;
+message Submit {
+  required User user = 1;
+  required Problem problem = 2;
+  required Source source = 3;
 }
 
-message SubmitList
-{
-    repeated Submit entry = 1;
+message SubmitList {
+  repeated Submit entry = 1;
 }
 
-message Handle
-{
-    required uint64 id = 1;
+message Handle {
+  required uint64 id = 1;
 }
 
-message HandleList
-{
-    repeated Handle entry = 1;
+message HandleList {
+  repeated Handle entry = 1;
 }
 
-message Problem
-{
-    required string id = 1;
-    required string contest = 2;
+message Problem {
+  required string id = 1;
+  required string contest = 2;
 }
 
-message Source
-{
-    required bytes data = 1;
-    // may become structure as language concept evolves
-    required string language = 2;
+message Source {
+  required bytes data = 1;
+  // may become structure as language concept evolves
+  required string language = 2;
 }
 
-message User // union
-{
-    optional string login = 1;
+message User {
+  oneof user {
+    string login = 1;
+  }
 }

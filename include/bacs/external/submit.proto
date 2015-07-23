@@ -1,11 +1,11 @@
-syntax = "proto2";
+syntax = "proto3";
 
 package bacs.external.submit;
 
 message Submit {
-  required User user = 1;
-  required Problem problem = 2;
-  required Source source = 3;
+  User user = 1;
+  Problem problem = 2;
+  Source source = 3;
 }
 
 message SubmitList {
@@ -13,7 +13,7 @@ message SubmitList {
 }
 
 message Handle {
-  required uint64 id = 1;
+  uint64 id = 1;
 }
 
 message HandleList {
@@ -21,14 +21,14 @@ message HandleList {
 }
 
 message Problem {
-  required string id = 1;
-  required string contest = 2;
+  string id = 1;
+  string contest = 2;
 }
 
 message Source {
-  required bytes data = 1;
+  bytes data = 1;
   // may become structure as language concept evolves
-  required string language = 2;
+  string language = 2;
 }
 
 message User {

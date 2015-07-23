@@ -26,8 +26,8 @@ class bacs_application : public application {
 
   int main(const variables_map &variables) override {
     bacs::external::Judge judge(root);
-    if (method == "submit") {
-      bacs::external::submit::Submit submit;
+    if (method == "send") {
+      bacs::external::Submit submit;
       if (variables.count("source")) {
         bunsan::protobuf::text::parse_partial(submit, argument);
         bunsan::filesystem::ifstream fin(source_path);
@@ -41,27 +41,27 @@ class bacs_application : public application {
       } else {
         bunsan::protobuf::text::parse(submit, argument);
       }
-      judge.Submit(submit).PrintDebugString();
+      judge.Send(submit).PrintDebugString();
     } else if (method == "rejudge") {
-      const auto handle =
-          bunsan::protobuf::text::parse_make<bacs::external::submit::Handle>(
+      const auto id =
+          bunsan::protobuf::text::parse_make<bacs::external::Submit::Id>(
               argument);
-      judge.Rejudge(handle).PrintDebugString();
+      judge.Rejudge(id).PrintDebugString();
     } else if (method == "fetch_result") {
       const auto handle =
           bunsan::protobuf::text::parse_make<bacs::external::result::Handle>(
               argument);
       judge.FetchResult(handle).PrintDebugString();
     } else if (method == "fetch_latest_result") {
-      const auto handle =
-          bunsan::protobuf::text::parse_make<bacs::external::submit::Handle>(
+      const auto id =
+          bunsan::protobuf::text::parse_make<bacs::external::Submit::Id>(
               argument);
-      judge.FetchLatestResult(handle).PrintDebugString();
+      judge.FetchLatestResult(id).PrintDebugString();
     } else if (method == "get_result_revisions") {
-      const auto handle =
-          bunsan::protobuf::text::parse_make<bacs::external::submit::Handle>(
+      const auto id =
+          bunsan::protobuf::text::parse_make<bacs::external::Submit::Id>(
               argument);
-      judge.GetResultRevisions(handle).PrintDebugString();
+      judge.GetResultRevisions(id).PrintDebugString();
     } else {
       std::cerr << "Invalid method = " << method << std::endl;
       return 1;

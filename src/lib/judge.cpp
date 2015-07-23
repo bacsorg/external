@@ -30,21 +30,21 @@ Judge::~Judge() {
         Call(#METHOD, bunsan::protobuf::binary::to_string(arg))); \
   }
 
-BUNSAN_RPC(result::Handle, Submit, const submit::Submit &)
-BUNSAN_RPC(result::HandleList, SubmitAll, const submit::SubmitList &)
+BUNSAN_RPC(result::Handle, Send, const Submit &)
+BUNSAN_RPC(result::HandleList, SendAll, const SubmitList &)
 
-BUNSAN_RPC(result::Handle, Rejudge, const submit::Handle &)
-BUNSAN_RPC(result::HandleList, RejudgeAll, const submit::HandleList &)
+BUNSAN_RPC(result::Handle, Rejudge, const Submit::Id &)
+BUNSAN_RPC(result::HandleList, RejudgeAll, const Submit::IdList &)
 
 BUNSAN_RPC(result::Submit, FetchResult, const result::Handle &)
 BUNSAN_RPC(result::SubmitList, FetchResultAll, const result::HandleList &)
 
-BUNSAN_RPC(result::Submit, FetchLatestResult, const submit::Handle &)
-BUNSAN_RPC(result::SubmitList, FetchLatestResultAll, const submit::HandleList &)
+BUNSAN_RPC(result::Submit, FetchLatestResult, const Submit::Id &)
+BUNSAN_RPC(result::SubmitList, FetchLatestResultAll, const Submit::IdList &)
 
-BUNSAN_RPC(result::MultipleHandle, GetResultRevisions, const submit::Handle &)
+BUNSAN_RPC(result::MultipleHandle, GetResultRevisions, const Submit::Id &)
 BUNSAN_RPC(result::MultipleHandleList, GetResultRevisionsAll,
-           const submit::HandleList &)
+           const Submit::IdList &)
 
 std::string Judge::Call(const std::string &method, const std::string &message) {
   pimpl->client.set(curl::options::url(pimpl->root + "/" + method));

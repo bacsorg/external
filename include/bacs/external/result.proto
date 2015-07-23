@@ -2,10 +2,10 @@ syntax = "proto3";
 
 package bacs.external.result;
 
-import "bacs/external/submit.proto";
+import "bacs/external/contest.proto";
 
 message Handle {
-  submit.Handle submit = 1;
+  external.Submit.Id submit = 1;
   uint64 revision = 2;
 }
 
@@ -14,7 +14,7 @@ message HandleList {
 }
 
 message MultipleHandle {
-  submit.Handle submit = 1;
+  external.Submit.Id submit = 1;
   // ordered by result timestamp descending
   repeated uint64 revision = 2;
 }

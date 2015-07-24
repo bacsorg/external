@@ -1,29 +1,10 @@
 syntax = "proto3";
 
-package bacs.external.result;
+package bacs.external;
 
 import "bacs/external/submit.proto";
 
-message Id {
-  external.Submit.Id submit = 1;
-  uint64 revision = 2;
-}
-
-message IdList {
-  repeated Id entry = 1;
-}
-
-message MultipleId {
-  external.Submit.Id submit = 1;
-  // ordered by result timestamp descending
-  repeated uint64 revision = 2;
-}
-
-message MultipleIdList {
-  repeated MultipleId entry = 1;
-}
-
-message System {
+message SystemResult {
   enum Status {
     OK = 0;
     FAIL = 1;
@@ -34,7 +15,7 @@ message System {
   Status status = 1;
 }
 
-message Build {
+message BuildResult {
   enum Status {
     OK = 0;
     FAIL = 1;
@@ -43,7 +24,7 @@ message Build {
   string output = 2;
 }
 
-message Test {
+message TestResult {
   enum Status {
     OK = 0;
     ABNORMAL_EXIT = 1;
@@ -68,10 +49,10 @@ message Test {
   ResourceUsage resource_usage = 4;
 }
 
-message TestGroup {
+message TestGroupResult {
   string id = 1;
   bool executed = 2;
-  repeated Test test = 3;
+  repeated TestResult test = 3;
 }
 
 message ResourceUsage {
@@ -79,13 +60,28 @@ message ResourceUsage {
   uint64 time_usage_millis = 2;
 }
 
-message Submit {
+message SubmitResult {
+  message Id {
+    external.Submit.Id submit = 1;
+    uint64 revision = 2;
+  }
+  message IdList {
+    repeated Id entry = 1;
+  }
+  message MultipleId {
+    external.Submit.Id submit = 1;
+    // ordered by result timestamp descending
+    repeated uint64 revision = 2;
+  }
+  message MultipleIdList {
+    repeated MultipleId entry = 1;
+  }
   Id id = 1;
-  System system = 2;
-  Build build = 3;
-  repeated TestGroup test_group = 4;
+  SystemResult system = 2;
+  BuildResult build = 3;
+  repeated TestGroupResult test_group = 4;
 }
 
-message SubmitList {
-  repeated Submit entry = 1;
+message SubmitResultList {
+  repeated SubmitResult entry = 1;
 }

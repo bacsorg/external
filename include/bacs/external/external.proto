@@ -20,19 +20,20 @@ service Judge {
   rpc GetStatementUrl(Problem.Statement.Request)
       returns (Problem.Statement.Url);
 
-  rpc Send(Submit) returns (result.Id);
-  rpc SendAll(SubmitList) returns (result.IdList);
+  rpc Send(Submit) returns (SubmitResult.Id);
+  rpc SendAll(SubmitList) returns (SubmitResult.IdList);
 
   // revision is not used
-  rpc Rejudge(Submit.Id) returns (result.Id);
-  rpc RejudgeAll(Submit.IdList) returns (result.IdList);
+  rpc Rejudge(Submit.Id) returns (SubmitResult.Id);
+  rpc RejudgeAll(Submit.IdList) returns (SubmitResult.IdList);
 
-  rpc FetchResult(result.Id) returns (result.Submit);
-  rpc FetchResultAll(result.IdList) returns (result.SubmitList);
+  rpc FetchResult(SubmitResult.Id) returns (SubmitResult);
+  rpc FetchResultAll(SubmitResult.IdList) returns (SubmitResultList);
 
-  rpc FetchLatestResult(Submit.Id) returns (result.Submit);
-  rpc FetchLatestResultAll(Submit.IdList) returns (result.SubmitList);
+  rpc FetchLatestResult(Submit.Id) returns (SubmitResult);
+  rpc FetchLatestResultAll(Submit.IdList) returns (SubmitResultList);
 
-  rpc GetResultRevisions(Submit.Id) returns (result.MultipleId);
-  rpc GetResultRevisionsAll(Submit.IdList) returns (result.MultipleIdList);
+  rpc GetResultRevisions(Submit.Id) returns (SubmitResult.MultipleId);
+  rpc GetResultRevisionsAll(Submit.IdList)
+      returns (SubmitResult.MultipleIdList);
 }

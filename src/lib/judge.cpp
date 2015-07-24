@@ -30,20 +30,20 @@ Judge::~Judge() {
         Call(#METHOD, bunsan::protobuf::binary::to_string(arg))); \
   }
 
-BUNSAN_RPC(result::Id, Send, const Submit &)
-BUNSAN_RPC(result::IdList, SendAll, const SubmitList &)
+BUNSAN_RPC(SubmitResult::Id, Send, const Submit &)
+BUNSAN_RPC(SubmitResult::IdList, SendAll, const SubmitList &)
 
-BUNSAN_RPC(result::Id, Rejudge, const Submit::Id &)
-BUNSAN_RPC(result::IdList, RejudgeAll, const Submit::IdList &)
+BUNSAN_RPC(SubmitResult::Id, Rejudge, const Submit::Id &)
+BUNSAN_RPC(SubmitResult::IdList, RejudgeAll, const Submit::IdList &)
 
-BUNSAN_RPC(result::Submit, FetchResult, const result::Id &)
-BUNSAN_RPC(result::SubmitList, FetchResultAll, const result::IdList &)
+BUNSAN_RPC(SubmitResult, FetchResult, const SubmitResult::Id &)
+BUNSAN_RPC(SubmitResultList, FetchResultAll, const SubmitResult::IdList &)
 
-BUNSAN_RPC(result::Submit, FetchLatestResult, const Submit::Id &)
-BUNSAN_RPC(result::SubmitList, FetchLatestResultAll, const Submit::IdList &)
+BUNSAN_RPC(SubmitResult, FetchLatestResult, const Submit::Id &)
+BUNSAN_RPC(SubmitResultList, FetchLatestResultAll, const Submit::IdList &)
 
-BUNSAN_RPC(result::MultipleId, GetResultRevisions, const Submit::Id &)
-BUNSAN_RPC(result::MultipleIdList, GetResultRevisionsAll,
+BUNSAN_RPC(SubmitResult::MultipleId, GetResultRevisions, const Submit::Id &)
+BUNSAN_RPC(SubmitResult::MultipleIdList, GetResultRevisionsAll,
            const Submit::IdList &)
 
 std::string Judge::Call(const std::string &method, const std::string &message) {

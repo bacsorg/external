@@ -15,20 +15,20 @@ class Judge : private boost::noncopyable {
   ~Judge();
 
  public:
-  result::Id Send(const Submit &submit);
-  result::IdList SendAll(const SubmitList &submits);
+  SubmitResult::Id Send(const Submit &submit);
+  SubmitResult::IdList SendAll(const SubmitList &submits);
 
-  result::Id Rejudge(const Submit::Id &id);
-  result::IdList RejudgeAll(const Submit::IdList &ids);
+  SubmitResult::Id Rejudge(const Submit::Id &id);
+  SubmitResult::IdList RejudgeAll(const Submit::IdList &ids);
 
-  result::Submit FetchResult(const result::Id &id);
-  result::SubmitList FetchResultAll(const result::IdList &ids);
+  SubmitResult FetchResult(const SubmitResult::Id &id);
+  SubmitResultList FetchResultAll(const SubmitResult::IdList &ids);
 
-  result::Submit FetchLatestResult(const Submit::Id &id);
-  result::SubmitList FetchLatestResultAll(const Submit::IdList &ids);
+  SubmitResult FetchLatestResult(const Submit::Id &id);
+  SubmitResultList FetchLatestResultAll(const Submit::IdList &ids);
 
-  result::MultipleId GetResultRevisions(const Submit::Id &id);
-  result::MultipleIdList GetResultRevisionsAll(const Submit::IdList &ids);
+  SubmitResult::MultipleId GetResultRevisions(const Submit::Id &id);
+  SubmitResult::MultipleIdList GetResultRevisionsAll(const Submit::IdList &ids);
 
  private:
   std::string Call(const std::string &method, const std::string &message);

@@ -49,7 +49,7 @@ class bacs_application : public application {
       judge.Rejudge(id).PrintDebugString();
     } else if (method == "fetch_result") {
       const auto id =
-          bunsan::protobuf::text::parse_make<bacs::external::result::Id>(
+          bunsan::protobuf::text::parse_make<bacs::external::SubmitResult::Id>(
               argument);
       judge.FetchResult(id).PrintDebugString();
     } else if (method == "fetch_latest_result") {

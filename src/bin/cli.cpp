@@ -48,10 +48,10 @@ class bacs_application : public application {
               argument);
       judge.Rejudge(id).PrintDebugString();
     } else if (method == "fetch_result") {
-      const auto handle =
-          bunsan::protobuf::text::parse_make<bacs::external::result::Handle>(
+      const auto id =
+          bunsan::protobuf::text::parse_make<bacs::external::result::Id>(
               argument);
-      judge.FetchResult(handle).PrintDebugString();
+      judge.FetchResult(id).PrintDebugString();
     } else if (method == "fetch_latest_result") {
       const auto id =
           bunsan::protobuf::text::parse_make<bacs::external::Submit::Id>(

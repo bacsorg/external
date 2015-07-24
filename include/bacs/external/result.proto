@@ -4,23 +4,23 @@ package bacs.external.result;
 
 import "bacs/external/submit.proto";
 
-message Handle {
+message Id {
   external.Submit.Id submit = 1;
   uint64 revision = 2;
 }
 
-message HandleList {
-  repeated Handle entry = 1;
+message IdList {
+  repeated Id entry = 1;
 }
 
-message MultipleHandle {
+message MultipleId {
   external.Submit.Id submit = 1;
   // ordered by result timestamp descending
   repeated uint64 revision = 2;
 }
 
-message MultipleHandleList {
-  repeated MultipleHandle entry = 1;
+message MultipleIdList {
+  repeated MultipleId entry = 1;
 }
 
 message System {
@@ -80,7 +80,7 @@ message ResourceUsage {
 }
 
 message Submit {
-  Handle handle = 1;
+  Id id = 1;
   System system = 2;
   Build build = 3;
   repeated TestGroup test_group = 4;

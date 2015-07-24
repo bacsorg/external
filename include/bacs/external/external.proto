@@ -3,7 +3,9 @@ syntax = "proto3";
 package bacs.external;
 
 import "bacs/external/contest.proto";
+import "bacs/external/language.proto";
 import "bacs/external/result.proto";
+import "bacs/external/submit.proto";
 
 import "google/protobuf/empty.proto";
 

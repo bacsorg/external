@@ -2,6 +2,26 @@ syntax = "proto3";
 
 package bacs.external;
 
+message Contest {
+  message Id {
+    string value = 1;
+  }
+  message IdList {
+    repeated Id entry = 1;
+  }
+  message Info {
+    string name = 1;
+    string description = 2;
+  }
+  Id id = 1;
+  map<string /* language */, Info> info = 2;
+  repeated Problem problem = 3;
+}
+
+message ContestList {
+  repeated Contest entry = 1;
+}
+
 message Problem {
   message Id {
     string value = 1;
@@ -32,66 +52,4 @@ message Problem {
   map<string /* language */, Info> info = 2;
   ResourceLimits resource_limits = 3;
   Statement statement = 4;
-}
-
-message Language {
-  message Id {
-    string value = 1;
-  }
-  message Info {
-    string name = 1;
-    string description = 2;
-  }
-  Id id = 1;
-  map<string /* language */, Info> info = 2;
-}
-
-message LanguageList {
-  repeated Language entry = 1;
-}
-
-message Contest {
-  message Id {
-    string value = 1;
-  }
-  message IdList {
-    repeated Id entry = 1;
-  }
-  message Info {
-    string name = 1;
-    string description = 2;
-  }
-  Id id = 1;
-  map<string /* language */, Info> info = 2;
-  repeated Problem problem = 3;
-}
-
-message ContestList {
-  repeated Contest entry = 1;
-}
-
-message Submit {
-  message Id {
-    uint64 value = 1;
-  }
-  message IdList {
-    repeated Id entry = 1;
-  }
-  message Author {
-    oneof author {
-      string user_login = 1;
-    }
-  }
-  message Source {
-    bytes data = 1;
-    Language.Id language = 2;
-  }
-  Id id = 1;  // should not be set by client
-  Author author = 2;
-  Problem.Id problem = 3;
-  Source source = 4;
-}
-
-message SubmitList {
-  repeated Submit entry = 1;
 }

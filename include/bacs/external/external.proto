@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package bacs.external;
+option go_package = "external";
 
 import "bacs/external/contest.proto";
 import "bacs/external/language.proto";

@@ -2,7 +2,7 @@
 // source: bacs/external/result.proto
 // DO NOT EDIT!
 
-package bacs_external
+package external
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

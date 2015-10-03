@@ -3,7 +3,7 @@
 // DO NOT EDIT!
 
 /*
-Package bacs_external is a generated protocol buffer package.
+Package external is a generated protocol buffer package.
 
 It is generated from these files:
 	bacs/external/contest.proto
@@ -28,7 +28,7 @@ It has these top-level messages:
 	Submit
 	SubmitList
 */
-package bacs_external
+package external
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
